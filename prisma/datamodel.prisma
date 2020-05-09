@@ -1,0 +1,98 @@
+type User {
+    id: ID! @id
+    name: String!
+    email: String! @unique
+    password: String! @unique
+    address: String
+    phone: Int @unique
+    created_at: DateTime! @createdAt 
+    cart: [CartItem!]
+    orders: [Order!]
+}
+
+type Vendor {
+    id: ID! @id
+    name: String!
+    email: String! @unique
+    password: String! @unique
+    address: String
+    phone: Int @unique
+    created_at: DateTime! @createdAt
+    payment_details: String
+    rating: Int 
+    items: [Item!]
+    orders: [Order!]
+}
+
+type Item {
+    id: ID! @id
+    name: String!
+    category: String!
+    type: ItemType!
+    url: String
+    description: String!
+    price: Int!
+    is_available: Boolean!
+    rating: Int
+    vendor: Vendor!
+}
+
+type CartItem {
+    id: ID! @id
+    item: Item!
+    type: ItemType!
+    quantity: Int!
+    delivery_date: DateTime!  
+    user: User!
+    added_at: DateTime! @createdAt 
+}
+
+type OrderBag {
+    id: ID! @id
+    type: ItemType!
+    order: Order
+    status: OrderStatus! @default(value: PLACED)
+    items: [OrderedItem!]!
+    delivery_date: DateTime!
+}
+
+
+type OrderedItem {
+    id: ID! @id
+    item: Item!
+    type: ItemType!
+    quantity: Int!
+    order_bag: OrderBag
+    delivery_date: DateTime
+    status: OrderStatus @default(value: PLACED)
+}
+
+type Order {
+    id: ID! @id
+    order_bags: [OrderBag!]!
+    total: Int!
+    customer: User!
+    vendor: Vendor!
+    order_date: DateTime!
+    delivery_address: String!
+    shipper: String
+    payment_details: String
+    status: OrderStatus  @default(value: PLACED)
+}
+
+enum ItemType {
+    BREAKFAST
+    LUNCH
+    SNACKS
+    DINNER
+}
+
+enum OrderStatus {
+    PLACED
+    ACCEPTED
+    CANCELLED
+    PROCESSING
+    DELIVERED
+    RECEIVED
+}
+
