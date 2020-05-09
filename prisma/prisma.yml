@@ -1,4 +1,4 @@
-endpoint: http://192.168.99.100:4466/
+endpoint: https://fay-server-8bf829119e.herokuapp.com/
 datamodel: datamodel.prisma
 
 # Specifies language & location for the generated Prisma client
