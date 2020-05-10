@@ -263,6 +263,7 @@ const typeDefs = gql`
         name: String
         category: String
         type: String
+        url: String
         description: String
         price: Int
         is_available: Boolean

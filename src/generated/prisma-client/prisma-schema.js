@@ -3,11 +3,7 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregateCartItem {
-  count: Int!
-}
-
-type AggregateItem {
+/* GraphQL */ `type AggregateItem {
   count: Int!
 }
 
@@ -33,245 +29,6 @@ type AggregateVendor {
 
 type BatchPayload {
   count: Long!
-}
-
-type CartItem {
-  id: ID!
-  item: Item!
-  type: ItemType!
-  quantity: Int!
-  delivery_date: DateTime!
-  user: User!
-  added_at: DateTime!
-}
-
-type CartItemConnection {
-  pageInfo: PageInfo!
-  edges: [CartItemEdge]!
-  aggregate: AggregateCartItem!
-}
-
-input CartItemCreateInput {
-  id: ID
-  item: ItemCreateOneInput!
-  type: ItemType!
-  quantity: Int!
-  delivery_date: DateTime!
-  user: UserCreateOneWithoutCartInput!
-}
-
-input CartItemCreateManyWithoutUserInput {
-  create: [CartItemCreateWithoutUserInput!]
-  connect: [CartItemWhereUniqueInput!]
-}
-
-input CartItemCreateWithoutUserInput {
-  id: ID
-  item: ItemCreateOneInput!
-  type: ItemType!
-  quantity: Int!
-  delivery_date: DateTime!
-}
-
-type CartItemEdge {
-  node: CartItem!
-  cursor: String!
-}
-
-enum CartItemOrderByInput {
-  id_ASC
-  id_DESC
-  type_ASC
-  type_DESC
-  quantity_ASC
-  quantity_DESC
-  delivery_date_ASC
-  delivery_date_DESC
-  added_at_ASC
-  added_at_DESC
-}
-
-type CartItemPreviousValues {
-  id: ID!
-  type: ItemType!
-  quantity: Int!
-  delivery_date: DateTime!
-  added_at: DateTime!
-}
-
-input CartItemScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  type: ItemType
-  type_not: ItemType
-  type_in: [ItemType!]
-  type_not_in: [ItemType!]
-  quantity: Int
-  quantity_not: Int
-  quantity_in: [Int!]
-  quantity_not_in: [Int!]
-  quantity_lt: Int
-  quantity_lte: Int
-  quantity_gt: Int
-  quantity_gte: Int
-  delivery_date: DateTime
-  delivery_date_not: DateTime
-  delivery_date_in: [DateTime!]
-  delivery_date_not_in: [DateTime!]
-  delivery_date_lt: DateTime
-  delivery_date_lte: DateTime
-  delivery_date_gt: DateTime
-  delivery_date_gte: DateTime
-  added_at: DateTime
-  added_at_not: DateTime
-  added_at_in: [DateTime!]
-  added_at_not_in: [DateTime!]
-  added_at_lt: DateTime
-  added_at_lte: DateTime
-  added_at_gt: DateTime
-  added_at_gte: DateTime
-  AND: [CartItemScalarWhereInput!]
-  OR: [CartItemScalarWhereInput!]
-  NOT: [CartItemScalarWhereInput!]
-}
-
-type CartItemSubscriptionPayload {
-  mutation: MutationType!
-  node: CartItem
-  updatedFields: [String!]
-  previousValues: CartItemPreviousValues
-}
-
-input CartItemSubscriptionWhereInput {
-  mutation_in: [MutationType!]
-  updatedFields_contains: String
-  updatedFields_contains_every: [String!]
-  updatedFields_contains_some: [String!]
-  node: CartItemWhereInput
-  AND: [CartItemSubscriptionWhereInput!]
-  OR: [CartItemSubscriptionWhereInput!]
-  NOT: [CartItemSubscriptionWhereInput!]
-}
-
-input CartItemUpdateInput {
-  item: ItemUpdateOneRequiredInput
-  type: ItemType
-  quantity: Int
-  delivery_date: DateTime
-  user: UserUpdateOneRequiredWithoutCartInput
-}
-
-input CartItemUpdateManyDataInput {
-  type: ItemType
-  quantity: Int
-  delivery_date: DateTime
-}
-
-input CartItemUpdateManyMutationInput {
-  type: ItemType
-  quantity: Int
-  delivery_date: DateTime
-}
-
-input CartItemUpdateManyWithoutUserInput {
-  create: [CartItemCreateWithoutUserInput!]
-  delete: [CartItemWhereUniqueInput!]
-  connect: [CartItemWhereUniqueInput!]
-  set: [CartItemWhereUniqueInput!]
-  disconnect: [CartItemWhereUniqueInput!]
-  update: [CartItemUpdateWithWhereUniqueWithoutUserInput!]
-  upsert: [CartItemUpsertWithWhereUniqueWithoutUserInput!]
-  deleteMany: [CartItemScalarWhereInput!]
-  updateMany: [CartItemUpdateManyWithWhereNestedInput!]
-}
-
-input CartItemUpdateManyWithWhereNestedInput {
-  where: CartItemScalarWhereInput!
-  data: CartItemUpdateManyDataInput!
-}
-
-input CartItemUpdateWithoutUserDataInput {
-  item: ItemUpdateOneRequiredInput
-  type: ItemType
-  quantity: Int
-  delivery_date: DateTime
-}
-
-input CartItemUpdateWithWhereUniqueWithoutUserInput {
-  where: CartItemWhereUniqueInput!
-  data: CartItemUpdateWithoutUserDataInput!
-}
-
-input CartItemUpsertWithWhereUniqueWithoutUserInput {
-  where: CartItemWhereUniqueInput!
-  update: CartItemUpdateWithoutUserDataInput!
-  create: CartItemCreateWithoutUserInput!
-}
-
-input CartItemWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  item: ItemWhereInput
-  type: ItemType
-  type_not: ItemType
-  type_in: [ItemType!]
-  type_not_in: [ItemType!]
-  quantity: Int
-  quantity_not: Int
-  quantity_in: [Int!]
-  quantity_not_in: [Int!]
-  quantity_lt: Int
-  quantity_lte: Int
-  quantity_gt: Int
-  quantity_gte: Int
-  delivery_date: DateTime
-  delivery_date_not: DateTime
-  delivery_date_in: [DateTime!]
-  delivery_date_not_in: [DateTime!]
-  delivery_date_lt: DateTime
-  delivery_date_lte: DateTime
-  delivery_date_gt: DateTime
-  delivery_date_gte: DateTime
-  user: UserWhereInput
-  added_at: DateTime
-  added_at_not: DateTime
-  added_at_in: [DateTime!]
-  added_at_not_in: [DateTime!]
-  added_at_lt: DateTime
-  added_at_lte: DateTime
-  added_at_gt: DateTime
-  added_at_gte: DateTime
-  AND: [CartItemWhereInput!]
-  OR: [CartItemWhereInput!]
-  NOT: [CartItemWhereInput!]
-}
-
-input CartItemWhereUniqueInput {
-  id: ID
 }
 
 scalar DateTime
@@ -694,12 +451,6 @@ input ItemWhereUniqueInput {
 scalar Long
 
 type Mutation {
-  createCartItem(data: CartItemCreateInput!): CartItem!
-  updateCartItem(data: CartItemUpdateInput!, where: CartItemWhereUniqueInput!): CartItem
-  updateManyCartItems(data: CartItemUpdateManyMutationInput!, where: CartItemWhereInput): BatchPayload!
-  upsertCartItem(where: CartItemWhereUniqueInput!, create: CartItemCreateInput!, update: CartItemUpdateInput!): CartItem!
-  deleteCartItem(where: CartItemWhereUniqueInput!): CartItem
-  deleteManyCartItems(where: CartItemWhereInput): BatchPayload!
   createItem(data: ItemCreateInput!): Item!
   updateItem(data: ItemUpdateInput!, where: ItemWhereUniqueInput!): Item
   updateManyItems(data: ItemUpdateManyMutationInput!, where: ItemWhereInput): BatchPayload!
@@ -1683,9 +1434,6 @@ type PageInfo {
 }
 
 type Query {
-  cartItem(where: CartItemWhereUniqueInput!): CartItem
-  cartItems(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem]!
-  cartItemsConnection(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CartItemConnection!
   item(where: ItemWhereUniqueInput!): Item
   items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Item]!
   itemsConnection(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ItemConnection!
@@ -1708,7 +1456,6 @@ type Query {
 }
 
 type Subscription {
-  cartItem(where: CartItemSubscriptionWhereInput): CartItemSubscriptionPayload
   item(where: ItemSubscriptionWhereInput): ItemSubscriptionPayload
   order(where: OrderSubscriptionWhereInput): OrderSubscriptionPayload
   orderBag(where: OrderBagSubscriptionWhereInput): OrderBagSubscriptionPayload
@@ -1725,7 +1472,6 @@ type User {
   address: String
   phone: Int
   created_at: DateTime!
-  cart(where: CartItemWhereInput, orderBy: CartItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CartItem!]
   orders(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Order!]
 }
 
@@ -1742,28 +1488,12 @@ input UserCreateInput {
   password: String!
   address: String
   phone: Int
-  cart: CartItemCreateManyWithoutUserInput
   orders: OrderCreateManyWithoutCustomerInput
-}
-
-input UserCreateOneWithoutCartInput {
-  create: UserCreateWithoutCartInput
-  connect: UserWhereUniqueInput
 }
 
 input UserCreateOneWithoutOrdersInput {
   create: UserCreateWithoutOrdersInput
   connect: UserWhereUniqueInput
-}
-
-input UserCreateWithoutCartInput {
-  id: ID
-  name: String!
-  email: String!
-  password: String!
-  address: String
-  phone: Int
-  orders: OrderCreateManyWithoutCustomerInput
 }
 
 input UserCreateWithoutOrdersInput {
@@ -1773,7 +1503,6 @@ input UserCreateWithoutOrdersInput {
   password: String!
   address: String
   phone: Int
-  cart: CartItemCreateManyWithoutUserInput
 }
 
 type UserEdge {
@@ -1832,7 +1561,6 @@ input UserUpdateInput {
   password: String
   address: String
   phone: Int
-  cart: CartItemUpdateManyWithoutUserInput
   orders: OrderUpdateManyWithoutCustomerInput
 }
 
@@ -1844,27 +1572,11 @@ input UserUpdateManyMutationInput {
   phone: Int
 }
 
-input UserUpdateOneRequiredWithoutCartInput {
-  create: UserCreateWithoutCartInput
-  update: UserUpdateWithoutCartDataInput
-  upsert: UserUpsertWithoutCartInput
-  connect: UserWhereUniqueInput
-}
-
 input UserUpdateOneRequiredWithoutOrdersInput {
   create: UserCreateWithoutOrdersInput
   update: UserUpdateWithoutOrdersDataInput
   upsert: UserUpsertWithoutOrdersInput
   connect: UserWhereUniqueInput
-}
-
-input UserUpdateWithoutCartDataInput {
-  name: String
-  email: String
-  password: String
-  address: String
-  phone: Int
-  orders: OrderUpdateManyWithoutCustomerInput
 }
 
 input UserUpdateWithoutOrdersDataInput {
@@ -1873,12 +1585,6 @@ input UserUpdateWithoutOrdersDataInput {
   password: String
   address: String
   phone: Int
-  cart: CartItemUpdateManyWithoutUserInput
-}
-
-input UserUpsertWithoutCartInput {
-  update: UserUpdateWithoutCartDataInput!
-  create: UserCreateWithoutCartInput!
 }
 
 input UserUpsertWithoutOrdersInput {
@@ -1973,9 +1679,6 @@ input UserWhereInput {
   created_at_lte: DateTime
   created_at_gt: DateTime
   created_at_gte: DateTime
-  cart_every: CartItemWhereInput
-  cart_some: CartItemWhereInput
-  cart_none: CartItemWhereInput
   orders_every: OrderWhereInput
   orders_some: OrderWhereInput
   orders_none: OrderWhereInput

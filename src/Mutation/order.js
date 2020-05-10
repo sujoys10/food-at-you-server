@@ -4,10 +4,9 @@ const createOrder = async (_, {input: {orderedItems, total, customer, vendor, or
     if(!user){
         throw new Error('Not Authenticated')
     }
-    //console.log({orderedItems, total, customer, vendor, order_date, delivery_address, shipper, payment_details})
 
     const allItems = [];
-    //console.log({allItems})
+
     orderedItems.map(item => {
         let obj = {
            item: {

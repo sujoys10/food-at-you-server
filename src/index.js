@@ -12,7 +12,6 @@ const server = new ApolloServer({
     resolvers,
     context: async ({req, connection}) => {
         if(connection){
-            //console.log(connection.context.authToken)
             const tokenWithBearer = connection.context.authToken || '';
             const token = tokenWithBearer.split(' ')[1];
             const user = getUser(token);

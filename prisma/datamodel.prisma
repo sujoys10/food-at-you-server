@@ -6,7 +6,6 @@ type User {
     address: String
     phone: Int @unique
     created_at: DateTime! @createdAt 
-    cart: [CartItem!]
     orders: [Order!]
 }
 
@@ -37,15 +36,6 @@ type Item {
     vendor: Vendor!
 }
 
-type CartItem {
-    id: ID! @id
-    item: Item!
-    type: ItemType!
-    quantity: Int!
-    delivery_date: DateTime!  
-    user: User!
-    added_at: DateTime! @createdAt 
-}
 
 type OrderBag {
     id: ID! @id
