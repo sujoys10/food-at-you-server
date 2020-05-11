@@ -48,7 +48,7 @@ const createOrder = async (_, {input: {orderedItems, total, customer, vendor, or
             connect: { email: customer}
         },
         vendor: {
-            connect: { email: vendor}
+            connect: { id : vendor}
         },
         total,
         order_date,
